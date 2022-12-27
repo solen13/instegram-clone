@@ -1,30 +1,37 @@
 <template>
-  <v-main class="mt-16 mb-16">
+  <v-main class="mt-16 mb-16" >
+<div class="contaniers"  style="position: relative">
 
+  <div>
     <div  style="width: 100%; height: 95px;overflow-x: auto;overflow-y:hidden;  gap:10px" class="d-flex banner">
       <div  v-for="item in storyApi">
         <story  :data="item" />
       </div>
     </div>
 
-
     <div v-for="(item,index) in getApi" :key="index">
       <banner :data="item" class="banner"/>
     </div>
-    <follow/>
 
+  </div>
+  <div class="destopFollow" style="position: fixed;right: 0;margin-right: 10%" >
+    <destop-follow/>
+  </div>
+
+
+</div>
   </v-main>
 </template>
 
 <script>
 import Story from "../components/story/story";
 import Banner from "../components/common/banner";
-import Follow from "../components/follow/follow";
 import getApi from '../constrant/api'
 import storyApi from '../constrant/storyApi'
+import DestopFollow from "../components/follow/destopFollow";
 export default {
   name: 'IndexPage',
-  components: {Follow, Banner, Story},
+  components: {DestopFollow, Banner, Story},
   computed:{
     getApi(){
       return getApi
@@ -38,12 +45,19 @@ export default {
 <style>
 @media only screen and (min-width:600px) {
   .banner{
-    width: 600px;
+    width: 850px;
+  }
+  .contaniers{
+    display: flex;
   }
 }
 @media only screen and (max-width:600px) {
   .banner{
     width: 100%;
   }
+  .destopFollow{
+    display: none;
+  }
+
 }
 </style>

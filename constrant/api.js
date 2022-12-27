@@ -7,6 +7,7 @@ const api=[
     declaration:'loremdkfndsojfbudsouızvbıusşdsof',
     numberComment:1000,
     date:'2 weekday',
+
   },
   {
     profileImage:'https://images.pexels.com/photos/839011/pexels-photo-839011.jpeg?auto=compress&cs=tinysrgb&w=600',
