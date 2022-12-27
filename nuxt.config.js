@@ -7,7 +7,7 @@ export default {
     fallback: true
   },
   head: {
-    title: 'instegram',
+    title: 'instagram',
     htmlAttrs: {
       lang: 'en'
     },
