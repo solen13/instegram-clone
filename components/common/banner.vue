@@ -1,8 +1,8 @@
 <template>
   <div class="mt-3">
 
-    <div @click="goProfile(data)" v-if="data.profileImage"  style="height:72px" class="d-flex justify-space-between align-center px-2">
-      <span class="d-flex">
+    <div v-if="data.profileImage"  style="height:72px ;border-bottom:.5px solid gray" class="d-flex justify-space-between align-center px-2">
+      <span  @click="goProfile(data)" class="d-flex" style="width: 100%" >
         <div  class="story  rounded-circle" >
           <div  class="rounded-circle" style="border: 3px solid white ; width: 95%;height: 95%" >
             <v-img  class="rounded-circle" max-width="100%" height="100%" :src="data.profileImage" ></v-img>
@@ -10,10 +10,16 @@
         </div>
         <h2  class="title ml-2">{{ data.name }}</h2>
       </span>
-      <v-btn icon><v-icon>mdi-dots-vertical</v-icon></v-btn>
+
+      <v-btn   @click="sheet = !sheet" icon>
+        <v-icon>mdi-dots-vertical</v-icon>
+      </v-btn>
+
+
     </div>
 
-   <v-img v-on:dblclick="isLike = ! isLike" v-if="data.profileImage" max-width="100%"  height="460" :src="data.postImage"></v-img>
+
+   <v-img class="mt-1" v-on:dblclick="isLike = ! isLike" v-if="data.profileImage" max-width="100%"  height="460" :src="data.postImage"></v-img>
     <div v-if="data.profileImage" style="width: 100% " class="d-flex justify-space-between px-2 mt-1">
       <div class="d-flex" style="gap:10px" >
 
@@ -68,10 +74,71 @@
     </div>
 
     <div class="hidden-md-and-up" v-if="data.show" >
+       <follow :data="data.sorce"/>
+    </div>
+
+    <div >
+      <v-bottom-sheet v-model="sheet" inset>
+
+        <v-sheet
+          class="text-center"
+          height="400px"
+          style="border-top-left-radius:30px ; border-top-right-radius: 30px "
+        >
+
+          <div class="my-3">
+
+          <div class="pa-4">
+
+            <v-btn elevation="0"  fab style="border: 2px solid black" >
+              <v-icon>mdi-share-variant-outline</v-icon>
+            </v-btn>
+
+            <v-btn  elevation="0"  fab style="border: 2px solid black">
+              <v-icon>mdi-connection</v-icon>
+            </v-btn>
+
+            <v-btn  elevation="0"  fab style="border: 2px solid black" >
+              <v-icon>mdi-repeat</v-icon>
+            </v-btn>
+
+            <v-btn  elevation="0"  fab style="border: 2px solid black">
+              <v-img  max-width="24" height="24" src="/headerIcon/save.svg"></v-img>
+            </v-btn>
+
+            <v-btn  elevation="0"  fab style="border: 2px solid black">
+              <v-icon>mdi-qrcode-scan</v-icon>
+            </v-btn>
+          </div>
+
+            <hr>
+         <div class="menu-detail">
+           <span class="pa-3">
+             <v-icon class="mr-1">mdi-hexagram-outline</v-icon> fovoriler ekle
+           </span>
+           <span class="pa-3">
+             <v-icon class="mr-1">mdi-account-minus-outline</v-icon> takibi bırak
+           </span>
+         </div>
+            <hr>
+
+           <div class="menu-detail">
+             <span class="pa-3">
+             <v-icon class="mr-1">mdi-alert-circle-outline</v-icon> Bu gonderi neden gormuyom
+           </span>
+
+             <span class="pa-3">
+                 <v-icon class="mr-1">mdi-eye-off</v-icon> Gizle
+           </span>
+             <span class="pa-3 red--text">
+              <v-icon class="red--text mr-1">mdi-comment-alert-outline</v-icon> şikayet et
+           </span>
+           </div>
 
 
-         <follow :data="data.sorce"/>
-
+          </div>
+        </v-sheet>
+      </v-bottom-sheet>
     </div>
   </div>
 </template>
@@ -85,7 +152,8 @@ export default {
   data(){
     return{
     datalar:false,
-      isLike:false
+      isLike:false,
+      sheet: false,
     }
   },
   props:{
@@ -128,5 +196,11 @@ export default {
 }
 .icon{
   font-size: 35px;
+}
+.menu-detail{
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 </style>

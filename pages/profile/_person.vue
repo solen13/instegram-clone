@@ -42,7 +42,7 @@
     <div class="story-contener ">
       <v-sheet  width="100%" >
         <v-slide-group class="pa-3">
-          <v-slide-item v-for="item in getData.profile.story" :key="item" class="pa-2">
+          <v-slide-item v-for="(item,index) in getData.profile.story" :key="index" class="pa-2">
             <v-card flat style="position: relative" max-width="82" height="95" >
               <div  class="story  rounded-circle" >
                 <div  class="rounded-circle" style="border: 3px solid white ; width: 95%;height: 95%;position: relative " >
@@ -61,7 +61,7 @@
     <div class="mb-16 all-image"  >
       <div class="img-contener">
         <v-row style="width: 100%">
-          <v-col cols="4"  lg="3" v-for="item in getData.profile.allPost">
+          <v-col cols="4"  lg="3" v-for="(item,index) in getData.profile.allPost" :key="index">
             <v-img max-width="100" height="100" :src="item.imageUrl"></v-img>
           </v-col>
         </v-row>
