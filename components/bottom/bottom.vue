@@ -2,11 +2,11 @@
 <div style="width: 100%;height: 72px"  class="white px-5">
   <div class="d-flex justify-center align-center mt-2 " style="gap:40px">
 
-      <v-btn icon>
+      <v-btn @click="$router.push('/')" icon>
         <v-img  max-width="24" height="24" src="/bottom/home.svg"></v-img>
       </v-btn>
 
-      <v-btn icon>
+      <v-btn @click="discover" icon>
         <v-img  max-width="24" height="24" src="/bottom/search.svg"></v-img>
       </v-btn>
 
@@ -31,8 +31,8 @@
 export default {
   name: "bottom",
   methods:{
-    ses(){
-
+    discover(){
+      this.$router.push('/discover')
     }
   }
 }

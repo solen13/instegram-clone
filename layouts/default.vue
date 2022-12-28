@@ -1,8 +1,7 @@
 <template>
   <v-app style="position: relative">
-    <nav-bar style="position: fixed ; z-index: 99" />
     <Nuxt/>
-    <bottom class="hidden-sm-and-up" style="position: fixed ; bottom: 0 ;z-index: 99"/>
+    <bottom class="hidden-sm-and-up" style="position: fixed ; bottom: 0 ;z-index: 98"/>
   </v-app>
 </template>
 

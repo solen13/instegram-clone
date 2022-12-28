@@ -21,7 +21,7 @@
          <v-img  max-width="24" height="24" src="/headerIcon/heart.svg"></v-img>
        </v-btn>
 
-       <v-btn class="hidden-sm-and-down" icon>
+       <v-btn @click="$router.push('/discover')" class="hidden-sm-and-down" icon>
          <v-img  max-width="24" height="24" src="/headerIcon/menus.svg"></v-img>
        </v-btn>
 

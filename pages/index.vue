@@ -1,10 +1,12 @@
 <template>
-  <v-main class="mt-16 mb-16" >
-<div class="contaniers"  style="position: relative">
+  <v-main class="mb-16"  style="position: relative">
+    <full-story-show :data="story" style="position: fixed;z-index: 99"/>
+    <nav-bar/>
+   <div class="contaniers"  style="position: relative">
 
   <div>
     <div class=" story blue">
-        <story  :data="storyApi" />
+        <story @posts="el($event)"  :data="storyApi" />
     </div>
 
     <div v-for="(item,index) in getApi" :key="index">
@@ -27,15 +29,27 @@ import Banner from "../components/common/banner";
 import getApi from '../constrant/api'
 import storyApi from '../constrant/storyApi'
 import DestopFollow from "../components/follow/destopFollow";
+import NavBar from "../components/nav-bar/nav-bar";
+import FullStoryShow from "../components/story/fullStoryShow";
 export default {
   name: 'IndexPage',
-  components: {DestopFollow, Banner, Story},
+  data(){
+   return{
+       story:null
+   }
+  },
+  components: {FullStoryShow, NavBar, DestopFollow, Banner, Story},
   computed:{
     getApi(){
       return getApi
     },
     storyApi(){
       return storyApi
+    }
+  },
+  methods:{
+    el(item){
+      this.story=item
     }
   }
 }

@@ -2,9 +2,9 @@
 
     <v-sheet  width="100%">
       <v-slide-group  v-if="data" class="pa-4" >
-        <v-slide-item v-for="(item,index) in data " :key="index" class="pa-2">
+        <v-slide-item  v-for="(item,index) in data " :key="index" class="pa-2">
 
-            <v-card flat style="position: relative" max-width="82" height="95" >
+            <v-card @click="storyshow(item)" flat style="position: relative" max-width="82" height="95" >
 
               <div  class="story  rounded-circle" >
                 <div  class="rounded-circle" style="border: 3px solid white ; width: 95%;height: 95%;position: relative " >
@@ -37,6 +37,11 @@ export default {
       default:[]
     }
   },
+  methods:{
+    storyshow(item){
+      this.$emit('posts',item)
+    }
+  }
 }
 </script>
 
