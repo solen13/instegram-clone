@@ -1,7 +1,7 @@
 <template>
   <div class="mt-3">
 
-    <div  v-if="data.profileImage"  style="height:72px" class="d-flex justify-space-between align-center px-2">
+    <div @click="goProfile(data)" v-if="data.profileImage"  style="height:72px" class="d-flex justify-space-between align-center px-2">
       <span class="d-flex">
         <div  class="story  rounded-circle" >
           <div  class="rounded-circle" style="border: 3px solid white ; width: 95%;height: 95%" >
@@ -13,14 +13,35 @@
       <v-btn icon><v-icon>mdi-dots-vertical</v-icon></v-btn>
     </div>
 
-   <v-img  v-if="data.profileImage" max-width="100%"  height="460" :src="data.postImage"></v-img>
+   <v-img v-on:dblclick="isLike = ! isLike" v-if="data.profileImage" max-width="100%"  height="460" :src="data.postImage"></v-img>
     <div v-if="data.profileImage" style="width: 100% " class="d-flex justify-space-between px-2 mt-1">
       <div class="d-flex" style="gap:10px" >
-        <v-btn icon> <v-img  max-width="24" height="24" src="/headerIcon/heart.svg"></v-img></v-btn>
-        <v-btn icon> <v-img  max-width="24" height="24" src="/headerIcon/comment.svg"></v-img></v-btn>
-        <v-btn icon> <v-img  max-width="24" height="24" src="/headerIcon/message.svg"></v-img></v-btn>
+
+        <v-btn @click="isLike = ! isLike" icon>
+          <v-img  v-if="isLike"  max-width="24" height="24" src="/headerIcon/isHeart.svg"></v-img>
+          <v-img  v-else max-width="24" height="24" src="/headerIcon/heart.svg"></v-img>
+
+        </v-btn>
+
+        <v-btn icon>
+          <v-img  max-width="24" height="24" src="/headerIcon/comment.svg"></v-img>
+        </v-btn>
+
+        <v-btn icon>
+          <v-img  max-width="24" height="24" src="/headerIcon/message.svg"></v-img>
+        </v-btn>
+
       </div>
-      <div>  <v-btn icon> <v-img  max-width="24" height="24" src="/headerIcon/save.svg"></v-img></v-btn></div>
+
+
+      <div >
+        <v-btn @click="datas()" tyle="z-index: 97" icon  >
+          <v-img   v-if="datalar" max-width="24" height="24" src="/headerIcon/isSave.svg"></v-img>
+          <v-img  v-else max-width="24" height="24" src="/headerIcon/save.svg"></v-img>
+        </v-btn>
+
+      </div>
+
     </div>
 
 
@@ -46,8 +67,11 @@
 
     </div>
 
-    <div v-if="data.show" >
-        <follow :data="data.sorce"/>
+    <div class="hidden-md-and-up" v-if="data.show" >
+
+
+         <follow :data="data.sorce"/>
+
     </div>
   </div>
 </template>
@@ -58,12 +82,36 @@ import Follow from "~/components/follow/follow";
 export default {
   name: "banner",
   components: {Follow},
+  data(){
+    return{
+    datalar:false,
+      isLike:false
+    }
+  },
   props:{
     data:{
       type:Object,
       default:()=>{}
     }
+  },
+  methods:{
+    goProfile(item){
+      console.log(item.name)
+      this.$router.push('/profile/'+item.name)
+    },
+
+    datas(){
+     this.datalar = ! this.datalar
+    }
+
+  },
+
+  computed:{
+    datam(){
+      return this.data.isSave
+    }
   }
+
 }
 </script>
 

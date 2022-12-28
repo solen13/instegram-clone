@@ -3,10 +3,8 @@
 <div class="contaniers"  style="position: relative">
 
   <div>
-    <div  style="width: 100%; height: 95px;overflow-x: auto;overflow-y:hidden;  gap:10px" class="d-flex banner">
-      <div  v-for="item in storyApi">
-        <story  :data="item" />
-      </div>
+    <div class=" story blue">
+        <story  :data="storyApi" />
     </div>
 
     <div v-for="(item,index) in getApi" :key="index">
@@ -14,7 +12,7 @@
     </div>
 
   </div>
-  <div class="destopFollow" style="position: fixed;right: 0;margin-right: 10%" >
+  <div class="destopFollow" style="position: fixed;right: 0" >
     <destop-follow/>
   </div>
 
@@ -43,12 +41,25 @@ export default {
 }
 </script>
 <style>
+@media only screen and (max-width:800px) {
+
+  .destopFollow{
+    display: none;
+  }
+}
 @media only screen and (min-width:600px) {
   .banner{
     width: 850px;
   }
   .contaniers{
     display: flex;
+  }
+  .story{
+    width: 850px;
+  }
+  .destopFollow{
+    width: 20%;
+    margin-right: 130px;
   }
 }
 @media only screen and (max-width:600px) {
@@ -57,6 +68,9 @@ export default {
   }
   .destopFollow{
     display: none;
+  }
+  .story{
+    width: 90%;
   }
 
 }

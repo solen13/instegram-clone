@@ -1,26 +1,32 @@
 <template>
-  <v-card  flat max-width="100%" height="95"  >
 
-      <v-card flat style="position: relative" max-width="72" height="95">
+    <v-sheet
+      width="100%"
+    class="sheet "
+    >
+      <v-slide-group
+        v-model="model"
+        class="pa-4"
+      >
+        <v-slide-item v-for="item in data" :key="item" class="pa-2">
 
-        <div  class="story  rounded-circle" >
+            <v-card flat style="position: relative" max-width="82" height="95" >
+              <div  class="story  rounded-circle" >
+                <div  class="rounded-circle" style="border: 3px solid white ; width: 95%;height: 95%;position: relative " >
+                  <v-img  class="rounded-circle" max-width="100%" height="100%" :src="item.image"></v-img>
+                  <v-btn v-if="item.me" icon small style="position: absolute;right: 0" fab>
+                    <v-icon class="blue white--text rounded-circle mb-10" >{{ item.me }}</v-icon>
+                  </v-btn>
+                </div>
+              </div>
+              <div style="width: 100%">
+                <p  class="text-center caption">{{item.name}}</p>
+              </div>
+            </v-card>
 
-          <div  class="rounded-circle" style="border: 3px solid white ; width: 95%;height: 95%;position: relative " >
-            <v-img  class="rounded-circle" max-width="100%" height="100%" :src="data.image"></v-img>
-            <v-btn v-if="data.me" icon small style="position: absolute;right: 0" fab>
-              <v-icon class="blue white--text rounded-circle mb-10" >{{ data.me }}</v-icon>
-            </v-btn>
-          </div>
-
-        </div>
-
-        <div style="width: 100%">
-          <p  class="text-center caption">{{data.name}}</p>
-        </div>
-      </v-card>
-
-
-  </v-card>
+        </v-slide-item>
+      </v-slide-group>
+    </v-sheet>
 </template>
 
 <script>
@@ -54,4 +60,5 @@ export default {
   height: 8px;
 
 }
+
 </style>

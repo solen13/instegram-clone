@@ -52,9 +52,7 @@ export default {
 
 <style scoped>
 .follow{
-  width: 293px;
-
+  width: 100%;
   height: 100vh;
-  margin-left: 10px;
 }
 </style>

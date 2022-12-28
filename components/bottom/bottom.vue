@@ -14,7 +14,7 @@
         <v-img  max-width="24" height="24" src="/headerIcon/add.svg"></v-img>
       </v-btn>
 
-      <v-btn icon>
+      <v-btn @click="ses" icon>
         <v-img  max-width="24" height="24" src="/headerIcon/heart.svg"></v-img>
       </v-btn>
 
@@ -29,7 +29,12 @@
 
 <script>
 export default {
-  name: "bottom"
+  name: "bottom",
+  methods:{
+    ses(){
+
+    }
+  }
 }
 </script>
 
