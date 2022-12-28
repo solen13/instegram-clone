@@ -40,8 +40,8 @@
   </div>
 
     <div class="story-contener ">
-      <v-sheet  width="100%"class="sheet" >
-        <v-slide-group class="pa-4">
+      <v-sheet  width="100%" >
+        <v-slide-group class="pa-3">
           <v-slide-item v-for="item in getData.profile.story" :key="item" class="pa-2">
             <v-card flat style="position: relative" max-width="82" height="95" >
               <div  class="story  rounded-circle" >
@@ -60,8 +60,8 @@
 
     <div class="mb-16 all-image"  >
       <div class="img-contener">
-        <v-row >
-          <v-col v-for="item in getData.profile.allPost">
+        <v-row style="width: 100%">
+          <v-col cols="4"  lg="3" v-for="item in getData.profile.allPost">
             <v-img max-width="100" height="100" :src="item.imageUrl"></v-img>
           </v-col>
         </v-row>
@@ -107,6 +107,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
 @media only screen and (min-width:600px) {
@@ -121,10 +122,13 @@ export default {
 }
 @media only screen and (max-width:600px) {
   .img-contener{
-    width:97%;
+    width:90%;
+
+    display: flex;
+    justify-content: center;
   }
   .story-contener{
-    width: 100%;
+    width: 97%;
 
   }
 }
