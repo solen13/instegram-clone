@@ -25,7 +25,7 @@
          <v-img  max-width="24" height="24" src="/headerIcon/menus.svg"></v-img>
        </v-btn>
 
-        <v-btn icon>
+        <v-btn @click="$router.push('/message')" icon>
           <v-img  max-width="24" height="24" src="/headerIcon/message.svg"></v-img>
         </v-btn>
 
